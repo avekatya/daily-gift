@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Daily Present</title>
+    <title>Your Week of Presents</title>
     <style>
         * {
             margin: 0;
@@ -227,7 +227,7 @@
         </button>
 
         <div class="tries-left" id="triesLeft">
-            Tries left today: <span id="triesCount">2</span>
+            Tries left today: <span id="triesCount">1</span>
         </div>
 
         <div class="present-message" id="presentMessage" style="display: none;"></div>
@@ -241,16 +241,13 @@
     <script>
         // Array of 10 present options - customize these!
         const presents = [
-            "🌟 A surprise compliment from a stranger!",
-            "☕ Your perfect cup of coffee/tea today!",
-            "📚 Discovery of an amazing book or article!",
-            "🎵 A song that will make your day better!",
-            "🌈 A beautiful moment in nature!",
-            "💌 An unexpected message from an old friend!",
-            "🍀 Good luck with something you're working on!",
-            "😊 A genuine smile from someone you meet!",
-            "🎨 Inspiration for a creative project!",
-            "⭐ A moment of perfect peace and happiness!"
+            "🎮 An evening of playing whatever game you want",
+            "💌 Massage",
+            "💨 Smoking together",
+            "🎵 Any activity/cafe on me (please, not too expensive 🥺)",
+            "🍳 Breakfast in bed (you choose the meal)",
+            "💑 One fantasy of your choice (within reason)",
+            "🧺 A day where I do all the chores"
         ];
 
         // Check if it's a new day and reset tries
@@ -260,7 +257,7 @@
             
             if (lastVisit !== today) {
                 localStorage.setItem('lastVisitDate', today);
-                localStorage.setItem('triesLeft', '2');
+                localStorage.setItem('triesLeft', '1');
                 localStorage.removeItem('nextResetTime');
             }
         }
@@ -273,7 +270,7 @@
 
         // Update tries display
         function updateTriesDisplay() {
-            const triesLeft = parseInt(localStorage.getItem('triesLeft') || '2');
+            const triesLeft = parseInt(localStorage.getItem('triesLeft') || '1');
             document.getElementById('triesCount').textContent = triesLeft;
             
             if (triesLeft <= 0) {
@@ -303,7 +300,7 @@
                     countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 } else {
                     // Reset for new day
-                    localStorage.setItem('triesLeft', '2');
+                    localStorage.setItem('triesLeft', '1');
                     localStorage.removeItem('nextResetTime');
                     countdownContainer.style.display = 'none';
                     document.getElementById('presentButton').disabled = false;
@@ -320,7 +317,7 @@
 
         // Main function to get present
         function getPresent() {
-            const triesLeft = parseInt(localStorage.getItem('triesLeft') || '2');
+            const triesLeft = parseInt(localStorage.getItem('triesLeft') || '1');
             
             if (triesLeft <= 0) {
                 return;
